@@ -1,6 +1,6 @@
 class Game {
     constructor() {
         this.players = [];
-        this.currentPlayer = this.players[0];
+        this.currentPlayer = null;
     }
 }
