@@ -60,5 +60,15 @@ function rollDie() {
     document.getElementById("die").value = dieRoll.toString();
 }
 function holdDie() {
+    currGame.currentPlayer.score += currGame.currentPlayer.turnTotal;
+    if (currGame.currentPlayer == currGame.players[0]) {
+        document.getElementById("score1").value = currGame.currentPlayer.score.toString();
+    }
+    else {
+        document.getElementById("score2").setAttribute("value", currGame.currentPlayer.score.toString());
+    }
+    currGame.currentPlayer.turnTotal = 0;
     changePlayers();
+    document.getElementById("die").value = "";
+    document.getElementById("total").value = "0";
 }

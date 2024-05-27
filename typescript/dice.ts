@@ -113,9 +113,22 @@ function holdDie(): void {
     //get the current turn total
     //determine who the current player is
     //add the current turn total to the player's total score
+    currGame.currentPlayer.score += currGame.currentPlayer.turnTotal;
+
+    if (currGame.currentPlayer == currGame.players[0]) {
+        (<HTMLInputElement>document.getElementById("score1")).value = currGame.currentPlayer.score.toString();
+    }
+    else {
+        document.getElementById("score2").setAttribute("value", currGame.currentPlayer.score.toString());
+    }
 
     //reset the turn total to 0
+    currGame.currentPlayer.turnTotal = 0;
 
     //change players
     changePlayers();
+
+    // clear the die roll and turn total
+    (<HTMLInputElement>document.getElementById("die")).value = "";
+    (<HTMLInputElement>document.getElementById("total")).value = "0";
 }
