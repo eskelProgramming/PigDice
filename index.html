@@ -4,43 +4,59 @@
     <meta charset="UTF-8">	
     <title>Pig Dice Game</title>
     <link rel="stylesheet" href="dice.css">
+    <!-- Add Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Add Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
     <script defer src="js/player.js"></script>
     <script defer src="js/game.js"></script>
     <script defer src="js/dice.js"></script>
 </head>
 <body>
-    <main>
-        <h1>Let's Play PIG!</h1>
-        <fieldset>
+    <main class="container">
+        <h1 class="text-center my-4">Let's Play PIG!</h1>
+        <fieldset class="mb-4">
             <legend>Rules</legend>
-            <ul>
-                <li>First player to 100 wins.</li>
-                <li>Players take turns rolling the die.</li>
-                <li>Turn ends when player rolls a 1 or chooses to hold.</li>
-                <li>If player rolls a 1, they lose all points earned during the turn.</li>
-                <li>If player holds, points earned during the turn are added to their total.</li>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">First player to 100 wins.</li>
+                <li class="list-group-item">Players take turns rolling the die.</li>
+                <li class="list-group-item">Turn ends when player rolls a 1 or chooses to hold.</li>
+                <li class="list-group-item">If player rolls a 1, they lose all points earned during the turn.</li>
+                <li class="list-group-item">If player holds, points earned during the turn are added to their total.</li>
             </ul>
         </fieldset>
-        <label for="player1">Player 1</label>
-            <input type="text" id="player1" >
-        <label for="score1">Score</label>
-            <input type="text" id="score1" value="0" disabled><br>
-        <label for="player2">Player 2</label>
-            <input type="text" id="player2">  
-        <label for="score2">Score</label>
-            <input type="text" id="score2" value="0" disabled>
-        <input type="button" id="new_game" value="New Game"><br>
+        <div class="mb-3">
+            <label for="player1" class="form-label">Player 1</label>
+            <input type="text" id="player1" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="score1" class="form-label">Score</label>
+            <input type="text" id="score1" value="0" class="form-control" disabled>
+        </div>
+        <div class="mb-3">
+            <label for="player2" class="form-label">Player 2</label>
+            <input type="text" id="player2" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="score2" class="form-label">Score</label>
+            <input type="text" id="score2" value="0" class="form-control" disabled>
+        </div>
+        <button type="button" id="new_game" class="btn btn-primary mb-3">New Game</button>
             
-        <section id="turn">
-            <p><span id="current">&nbsp;</span>'s turn</p>
-            <input type="button" id="roll" value="Roll">
-            <input type="button" id="hold" value="Hold">
+        <section id="turn" class="mb-3">
+            <p><span id="current"> </span>'s turn</p>
+            <button type="button" id="roll" class="btn btn-secondary">Roll</button>
+            <button type="button" id="hold" class="btn btn-secondary">Hold</button>
     
-            <label for="die">Die</label>
-                <input type="text" id="die" disabled>
-            <label for="total">Total</label>
-                <input type="text" id="total" disabled> 
+            <div class="mb-3">
+                <label for="die" class="form-label">Die</label>
+                <input type="text" id="die" class="form-control" disabled>
+            </div>
+            <div class="mb-3">
+                <label for="total" class="form-label">Total</label>
+                <input type="text" id="total" class="form-control" disabled> 
+            </div>
         </section>
     </main>
 </body>
