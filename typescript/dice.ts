@@ -11,12 +11,22 @@ function generateRandomValue(minValue: number, maxValue: number): number {
 
 
 function changePlayers(): void {
-    let currentPlayerName = (<HTMLElement>document.getElementById("current")).innerText;
-    let player1Name = (<HTMLInputElement>document.getElementById("player1")).value;
-    let player2Name = (<HTMLInputElement>document.getElementById("player2")).value;
+    let currentPlayerName = <HTMLElement>document.getElementById("current");
 
     //swap from player to player by comparing current name to player names
     //set currentPlayerName to the next player
+    if (currGame.currentPlayer == currGame.players[0]) {
+        currGame.currentPlayer = currGame.players[1];
+        currentPlayerName.innerText = currGame.players[1].name;
+    }
+    else if (currGame.currentPlayer == currGame.players[1]) {
+        currGame.currentPlayer = currGame.players[0];
+        currentPlayerName.innerText = currGame.players[0].name;
+    }
+    else {
+        currGame.currentPlayer = currGame.players[0];
+        currentPlayerName.innerText = currGame.players[0].name;
+    }
 }
 
 window.onload = function () {
@@ -31,7 +41,7 @@ window.onload = function () {
 function createNewGame() {
     //reset the game object
     currGame = new Game();
-    
+
     // Create players in the game object
     currGame.players[0] = new Player();
     currGame.players[1] = new Player();

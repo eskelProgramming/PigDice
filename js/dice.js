@@ -4,9 +4,19 @@ function generateRandomValue(minValue, maxValue) {
     return random;
 }
 function changePlayers() {
-    let currentPlayerName = document.getElementById("current").innerText;
-    let player1Name = document.getElementById("player1").value;
-    let player2Name = document.getElementById("player2").value;
+    let currentPlayerName = document.getElementById("current");
+    if (currGame.currentPlayer == currGame.players[0]) {
+        currGame.currentPlayer = currGame.players[1];
+        currentPlayerName.innerText = currGame.players[1].name;
+    }
+    else if (currGame.currentPlayer == currGame.players[1]) {
+        currGame.currentPlayer = currGame.players[0];
+        currentPlayerName.innerText = currGame.players[0].name;
+    }
+    else {
+        currGame.currentPlayer = currGame.players[0];
+        currentPlayerName.innerText = currGame.players[0].name;
+    }
 }
 window.onload = function () {
     let newGameBtn = document.getElementById("new_game");
