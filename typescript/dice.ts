@@ -4,8 +4,14 @@ let currGame: Game = new Game();
 function generateRandomValue(minValue: number, maxValue: number): number {
     var random = Math.random();
 
-    //TODO: use random to generate a number between min and max
+    //Use random to generate a number between min and max value
+    //Math.random generates a number between 0 and 1
+    //multiply the random number by the range of numbers you want
+    //add the min value to the result to shift the range of numbers
+    //Math.floor will round down to the nearest whole number
+    random = Math.floor(random * (maxValue - minValue + 1) + minValue);
 
+    //return the result
     return random;
 }
 
@@ -73,19 +79,34 @@ function createNewGame() {
 }
 
 function rollDie(): void {
-    let currTotal = parseInt((<HTMLInputElement>document.getElementById("total")).value);
+    let currTotal = (currGame.currentPlayer).turnTotal;
 
     //roll the die and get a random value 1 - 6 (use generateRandomValue function)
+    let dieRoll = generateRandomValue(1, 6);
 
     //if the roll is 1
     //  change players
     //  set current total to 0
+    if (dieRoll == 1) {
+        currTotal = 0;
+        (<HTMLInputElement>document.getElementById("total")).value = currTotal.toString();
+        changePlayers();
+    }
 
     //if the roll is greater than 1
     //  add roll value to current total
+    //  display current total on form
+    else {
+        currTotal += dieRoll;
+        (<HTMLInputElement>document.getElementById("total")).value = currTotal.toString();
+    }
+
+    // set the player's turn total to the current total
+    (currGame.currentPlayer).turnTotal = currTotal;
 
     //set the die roll to value player rolled
     //display current total on form
+    (<HTMLInputElement>document.getElementById("die")).value = dieRoll.toString();
 }
 
 function holdDie(): void {

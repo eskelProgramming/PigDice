@@ -1,6 +1,7 @@
 let currGame = new Game();
 function generateRandomValue(minValue, maxValue) {
     var random = Math.random();
+    random = Math.floor(random * (maxValue - minValue + 1) + minValue);
     return random;
 }
 function changePlayers() {
@@ -44,7 +45,19 @@ function createNewGame() {
     }
 }
 function rollDie() {
-    let currTotal = parseInt(document.getElementById("total").value);
+    let currTotal = (currGame.currentPlayer).turnTotal;
+    let dieRoll = generateRandomValue(1, 6);
+    if (dieRoll == 1) {
+        currTotal = 0;
+        document.getElementById("total").value = currTotal.toString();
+        changePlayers();
+    }
+    else {
+        currTotal += dieRoll;
+        document.getElementById("total").value = currTotal.toString();
+    }
+    (currGame.currentPlayer).turnTotal = currTotal;
+    document.getElementById("die").value = dieRoll.toString();
 }
 function holdDie() {
     changePlayers();
