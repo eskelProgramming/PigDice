@@ -10,4 +10,9 @@ class Game {
      * The player whose turn it is.
      */
     currentPlayer: Player;
+
+    constructor() {
+        this.players = [];
+        this.currentPlayer = this.players[0];
+    }
 }
