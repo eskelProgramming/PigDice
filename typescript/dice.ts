@@ -107,6 +107,29 @@ function rollDie(): void {
     //set the die roll to value player rolled
     //display current total on form
     (<HTMLInputElement>document.getElementById("die")).value = dieRoll.toString();
+
+    // if the player's score is greater than or equal to 100
+    //  display a message that the player has won
+    checkForWin(currTotal);
+}
+
+function checkForWin(currTotal: number) {
+    if (currGame.currentPlayer.score + currTotal >= 100) {
+        alert(currGame.currentPlayer.name + " has won!");
+        (<HTMLElement>document.getElementById("turn")).classList.remove("open");
+
+        // clear player names
+        (<HTMLInputElement>document.getElementById("player1")).value = "";
+        (<HTMLInputElement>document.getElementById("player2")).value = "";
+
+        // unlock player names
+        (<HTMLInputElement>document.getElementById("player1")).removeAttribute("disabled");
+        (<HTMLInputElement>document.getElementById("player2")).removeAttribute("disabled");
+
+        // clear scores
+        (<HTMLInputElement>document.getElementById("score1")).value = "";
+        (<HTMLInputElement>document.getElementById("score2")).value = "";
+    }
 }
 
 function holdDie(): void {

@@ -58,6 +58,19 @@ function rollDie() {
     }
     (currGame.currentPlayer).turnTotal = currTotal;
     document.getElementById("die").value = dieRoll.toString();
+    checkForWin(currTotal);
+}
+function checkForWin(currTotal) {
+    if (currGame.currentPlayer.score + currTotal >= 100) {
+        alert(currGame.currentPlayer.name + " has won!");
+        document.getElementById("turn").classList.remove("open");
+        document.getElementById("player1").value = "";
+        document.getElementById("player2").value = "";
+        document.getElementById("player1").removeAttribute("disabled");
+        document.getElementById("player2").removeAttribute("disabled");
+        document.getElementById("score1").value = "";
+        document.getElementById("score2").value = "";
+    }
 }
 function holdDie() {
     currGame.currentPlayer.score += currGame.currentPlayer.turnTotal;
